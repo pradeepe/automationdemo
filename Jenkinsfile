@@ -17,7 +17,15 @@ node(){
         }
         
     }
-
+  
+    stage('Code Quality Scane') {
+        nodejs('nodejs') {
+            sh 'npm run build sonar:sonar'
+            echo "Code Quality Scan is completed"
+        }
+        
+    } 
+  
     stage('Package Build') {
         sh "tar -zcvf bundle.tar.gz dist/automationdemo/"
     }
