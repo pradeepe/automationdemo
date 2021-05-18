@@ -20,7 +20,7 @@ node(){
   
     stage('Code Quality Scane') {
         nodejs('nodejs') {
-            sh 'npm run build sonar:sonar'
+             sh 'npm install -D sonarqube-scanner'
             echo "Code Quality Scan is completed"
         }
         
