@@ -1,33 +1,29 @@
 node(){
     stage('Cloning Git') {
         checkout scm
-    }
-        
+    }    
     stage('Install dependencies') {
         nodejs('nodejs') {
             sh 'npm install'
             echo "Modules installed"
         }
-        
     }
     stage('Build') {
         nodejs('nodejs') {
             sh 'npm run build'
-            echo "Build completed"
+            echo "NPM Build is completed..."
         }
-        
     }
-  
-    stage('Code Quality Scane') {
+    stage('Source Code Analysis') {
         nodejs('nodejs') {
              sh 'npm install -D sonarqube-scanner'
-            echo "Code Quality Scan is completed"
+            echo "Sonar - Source Code Analysis is completed..."
         }
-        
     } 
   
-    stage('Package Build') {
+    stage('Package') {
         sh "tar -zcvf bundle.tar.gz dist/automationdemo/"
+        echo "Packaging the build is completed..."
     }
 
     stage('Artifacts Creation') {
@@ -35,7 +31,9 @@ node(){
         archiveArtifacts 'bundle.tar.gz'
         echo "Artifacts created"
     }
-
+    stage('Code Coverage') {
+            jacoco()
+    } 
     stage('Stash changes') {
         stash allowEmpty: true, includes: 'bundle.tar.gz', name: 'buildArtifacts'
     }
