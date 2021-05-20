@@ -8,7 +8,7 @@ sonar.sources=src
 
 sonar.java.binaries=target
 # Language
-sonar.language=java
+sonar.language=JavaScript
 
 # Encoding of the source files
 sonar.sourceEncoding=UTF-8
