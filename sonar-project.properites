@@ -1,3 +1,6 @@
+# Default SonarQube Scanner
+  Sonar.host.url=http://54.151.83.134:9000
+
 # Required metadata
 sonar.projectKey=org.sonarqube:pradeepe
 sonar.projectName=automationdemo
