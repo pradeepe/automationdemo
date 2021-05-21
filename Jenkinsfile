@@ -23,7 +23,7 @@ node(){
   
     stage('Package') {
         
-        sh "tar -zcvf bundle-$BUILD_NUMBER.tar.gz dist/automationdemo/"
+        sh "tar -zcvf bundle.tar.gz dist/automationdemo/"
         echo "Packaging the build is completed..."
     }
 
