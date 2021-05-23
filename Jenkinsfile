@@ -20,6 +20,23 @@ node(){
             echo "Sonar - Source Code Analysis is completed..."
         }
     } 
+
+    stage('Code Quality Check via SonarQube') {
+       steps {
+           script {
+              def scannerHome = tool 'sonarqube';
+               withSonarQubeEnv("sonarqube-container") {
+                sh "${tool("sonarqube")}/bin/sonar-scanner \
+                 -Dsonar.projectKey=test-node-js \
+                 -Dsonar.sources=. \
+                 -Dsonar.css.node=. \
+                 -Dsonar.host.url=http://52.53.178.237:9000 \
+                 -Dsonar.login=7e1575ed01bb6a3bed80600080b93fe58870d424
+                 -Dsonar.projectKey=NPM-CICD-automation \
+               }
+           }
+       }
+    }
   
     stage('Package') {
         
