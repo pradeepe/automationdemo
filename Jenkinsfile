@@ -23,8 +23,8 @@ node(){
 
     stage('Code Quality Check via SonarQube') {
            script {
-              def scannerHome = tool 'SonarQube';
-               withSonarQubeEnv("sonarqube-container") {
+              def scannerHome = tool name: 'SonarQube', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+               withSonarQubeEnv("SonarQube") {
                 sh "${tool("sonarqube")}/bin/sonar-scanner \
                  -Dsonar.sources=. \
                  -Dsonar.css.node=. \
