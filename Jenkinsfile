@@ -32,7 +32,7 @@ node(){
                  -Dsonar.css.node=. \
                  -Dsonar.host.url=http://52.53.178.237:9000 \
                  -Dsonar.login=7e1575ed01bb6a3bed80600080b93fe58870d424 \
-                 -Dsonar.projectKey=NPM-CICD-automation 
+                 -Dsonar.projectKey=NPM-CICD-automation" 
                }
            }
        }
