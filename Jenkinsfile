@@ -25,7 +25,7 @@ node(){
            script {
               def scannerHome = tool name: 'SonarQube', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
                withSonarQubeEnv("SonarQube") {
-                sh "${tool("sonarqube")}/bin/sonar-scanner \
+                sh "${tool("SonarQube")}/bin/sonar-scanner \
                  -Dsonar.sources=. \
                  -Dsonar.css.node=. \
                  -Dsonar.host.url=http://52.53.178.237:9000 \
