@@ -2,7 +2,7 @@
 Sonar.host.url=http://52.53.178.237:9000/
 
 # Required metadata
-sonar.projectKey=NPM-CICD-automation
+sonar.projectKey=7e1575ed01bb6a3bed80600080b93fe58870d424
 sonar.origin=7e1575ed01bb6a3bed80600080b93fe58870d424
 sonar.projectName=NPM-CICD-automation-Token
 sonar.projectVersion=1.0
