@@ -27,7 +27,6 @@ node(){
               def scannerHome = tool 'sonarqube';
                withSonarQubeEnv("sonarqube-container") {
                 sh "${tool("sonarqube")}/bin/sonar-scanner \
-                 -Dsonar.projectKey=test-node-js \
                  -Dsonar.sources=. \
                  -Dsonar.css.node=. \
                  -Dsonar.host.url=http://52.53.178.237:9000 \
