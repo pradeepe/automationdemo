@@ -23,7 +23,7 @@ node(){
 
     stage('Code Quality Check via SonarQube') {
            script {
-              def scannerHome = tool 'sonarqube';
+              def scannerHome = tool 'SonarQube';
                withSonarQubeEnv("sonarqube-container") {
                 sh "${tool("sonarqube")}/bin/sonar-scanner \
                  -Dsonar.sources=. \
