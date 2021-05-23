@@ -22,7 +22,6 @@ node(){
     } 
 
     stage('Code Quality Check via SonarQube') {
-       steps {
            script {
               def scannerHome = tool 'sonarqube';
                withSonarQubeEnv("sonarqube-container") {
@@ -34,7 +33,6 @@ node(){
                  -Dsonar.projectKey=NPM-CICD-automation" 
                }
            }
-       }
     }
   
     stage('Package') {
