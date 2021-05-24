@@ -14,27 +14,19 @@ node(){
             echo "NPM Build is completed..."
         }
     }
-    stage('Source Code Analysis') {
-        nodejs('nodejs') {
-             sh 'npm install -D sonarqube-scanner  -Dsonar.host.url=http://52.53.178.237:9000 -Dsonar.login=7e1575ed01bb6a3bed80600080b93fe58870d424 -Dsonar.projectKey=NPM-CICD-automation'
-            echo "Sonar - Source Code Analysis is completed..."
+    stage('Code Quality Check via SonarQube') {
+        script {
+           def scannerHome = tool name: 'SonarQube';
+            withSonarQubeEnv("SonarQube") {
+             sh "${tool("SonarQube")}/bin/sonar-scanner \
+              -Dsonar.sources=. \
+              -Dsonar.css.node=. \
+              -Dsonar.host.url=http://52.53.178.237:9000 \
+              -Dsonar.login=7e1575ed01bb6a3bed80600080b93fe58870d424 \
+              -Dsonar.projectKey=NPM-CICD-automation" 
+            }
         }
     } 
-
-    stage('Code Quality Check via SonarQube') {
-           script {
-              def scannerHome = tool name: 'SonarQube';
-               withSonarQubeEnv("SonarQube") {
-                sh "${tool("SonarQube")}/bin/sonar-scanner \
-                 -Dsonar.sources=. \
-                 -Dsonar.css.node=. \
-                 -Dsonar.host.url=http://52.53.178.237:9000 \
-                 -Dsonar.login=7e1575ed01bb6a3bed80600080b93fe58870d424 \
-                 -Dsonar.projectKey=NPM-CICD-automation" 
-               }
-           }
-    }
-  
     stage('Package') {
         
         sh "tar -zcvf bundle.tar.gz dist/automationdemo/"
